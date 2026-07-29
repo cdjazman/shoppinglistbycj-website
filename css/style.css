@@ -1074,6 +1074,7 @@ h1, h2, h3, h4 {
 .footer-logo {
   height: 28px;
   width: auto;
+  margin-inline: auto;
   margin-bottom: var(--space-2);
 }
 
