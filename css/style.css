@@ -738,6 +738,36 @@ h1, h2, h3, h4 {
   max-width: 56ch;
 }
 
+.pwa-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+.pwa-banner-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--orange);
+  margin-bottom: 0.3rem;
+}
+
+.pwa-banner-text p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 46ch;
+}
+
+.pwa-banner .btn {
+  flex-shrink: 0;
+}
+
 .beta-content {
   padding-block: 0 var(--space-8);
 }
@@ -1167,6 +1197,12 @@ h1, h2, h3, h4 {
   .beta-grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-7);
+  }
+
+  .pwa-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .legal-content {
