@@ -738,6 +738,7 @@ h1, h2, h3, h4 {
   max-width: 56ch;
 }
 
+<<<<<<< HEAD
 .beta-access-hero {
   min-height: 100vh;
   display: flex;
@@ -779,6 +780,8 @@ h1, h2, h3, h4 {
   font-size: 0.8rem;
 }
 
+=======
+>>>>>>> a9feefbe28047e0d771558d837d24ddb2ce5c1c6
 .pwa-banner {
   display: flex;
   flex-direction: column;
