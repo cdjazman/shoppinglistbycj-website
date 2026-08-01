@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /beta.html
+Allow: /
+
+Sitemap: https://shoppinglistbycj.app/sitemap.xml

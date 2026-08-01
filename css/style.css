@@ -738,6 +738,77 @@ h1, h2, h3, h4 {
   max-width: 56ch;
 }
 
+.beta-access-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-6);
+}
+
+.beta-access-inner {
+  max-width: 480px;
+  text-align: center;
+  margin-inline: auto;
+}
+
+.beta-access-inner .hero-mark {
+  margin-inline: auto;
+}
+
+.beta-access-inner .hero-sub {
+  margin-inline: auto;
+  max-width: 44ch;
+}
+
+.beta-access-inner .hero-actions {
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.beta-access-inner code {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.9em;
+  color: var(--orange);
+}
+
+.beta-access-note {
+  color: var(--text-faint);
+  font-size: 0.8rem;
+}
+
+.pwa-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+}
+
+.pwa-banner-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--orange);
+  margin-bottom: 0.3rem;
+}
+
+.pwa-banner-text p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 46ch;
+}
+
+.pwa-banner .btn {
+  flex-shrink: 0;
+}
+
 .beta-content {
   padding-block: 0 var(--space-8);
 }
@@ -1074,6 +1145,7 @@ h1, h2, h3, h4 {
 .footer-logo {
   height: 28px;
   width: auto;
+  margin-inline: auto;
   margin-bottom: var(--space-2);
 }
 
@@ -1166,6 +1238,12 @@ h1, h2, h3, h4 {
   .beta-grid {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-7);
+  }
+
+  .pwa-banner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .legal-content {
