@@ -15,19 +15,12 @@
 (function () {
   'use strict';
 
-  // TODO: swap this for the real production URL once Shopping List by CJ
-  // is deployed. Until then this points at a placeholder so the button's
-  // behaviour (payload building, encoding, navigation) is fully wired up
-  // and only the destination needs to change.
-  var SHOPPING_LIST_APP_URL = 'https://app.shoppinglistbycj.com';
+  // Production URL for Shopping List by CJ (Cloudflare Pages).
+  var SHOPPING_LIST_APP_URL = 'https://shopping-list-by-cj.pages.dev';
 
-  // While the app isn't live, importing opens a new tab rather than
-  // navigating the current one, so a broken/placeholder link doesn't strand
-  // someone away from the recipe page. Once SHOPPING_LIST_APP_URL is real,
-  // set this to false — same-tab navigation (window.location.href) is what
-  // lets an installed PWA intercept the link and open natively instead of
-  // just landing in a browser tab.
-  var OPEN_IMPORT_IN_NEW_TAB = true;
+  // Same-tab navigation — this is what lets an installed PWA intercept the
+  // link and open natively instead of just landing in a browser tab.
+  var OPEN_IMPORT_IN_NEW_TAB = false;
 
   var MAX_INGREDIENTS_PER_RECIPE = 40;
 

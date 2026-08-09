@@ -136,14 +136,15 @@ already loaded on the page.
   single source of truth for what gets imported — there's no separate data
   file to keep in sync with the visible ingredient list).
 - `buildImportUrl()` — constructs the payload and the final URL.
-- `SHOPPING_LIST_APP_URL` — the app's production URL. **Currently a
-  placeholder** (`https://app.shoppinglistbycj.com`) because the app isn't
-  deployed to a stable production URL yet. Update this the moment it is.
-- `OPEN_IMPORT_IN_NEW_TAB` — `true` while `SHOPPING_LIST_APP_URL` is a
-  placeholder, so a dead link doesn't strand someone away from the recipe
-  page. Set to `false` once the URL is real — same-tab navigation
-  (`window.location.href`) is what lets an installed PWA intercept the
-  link and open natively instead of just landing in a browser tab.
+- `SHOPPING_LIST_APP_URL` — the app's production URL:
+  `https://shopping-list-by-cj.pages.dev` (Cloudflare Pages). Update this
+  if the app ever moves to a different production domain.
+- `OPEN_IMPORT_IN_NEW_TAB` — `false` now that `SHOPPING_LIST_APP_URL` is
+  real. Same-tab navigation (`window.location.href`) is what lets an
+  installed PWA intercept the link and open natively instead of just
+  landing in a browser tab. Only set this back to `true` temporarily if
+  the production URL is ever broken/unreachable again, so a dead link
+  doesn't strand someone away from the recipe page.
 
 ---
 
