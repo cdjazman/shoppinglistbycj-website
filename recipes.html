@@ -84,7 +84,7 @@
       </h1>
 
       <p class="hero-sub">
-        Pick a recipe below and send every ingredient straight into Shopping List by CJ &mdash; no retyping, nothing overwritten. It's added on top of whatever's already on your list.
+        Pick a recipe and send every ingredient straight into Shopping List by CJ &mdash; no retyping, nothing overwritten. It's added on top of whatever's already on your list.
       </p>
     </div>
   </section>
@@ -100,8 +100,8 @@
       <div class="how-grid reveal">
         <div class="how-step">
           <span class="how-step-number">1</span>
-          <h3>Pick a recipe</h3>
-          <p>Browse the ingredient lists below &mdash; no account, no sign-up.</p>
+          <h3>Open a recipe</h3>
+          <p>Browse the list below &mdash; no account, no sign-up.</p>
         </div>
         <div class="how-step">
           <span class="how-step-number">2</span>
@@ -117,7 +117,14 @@
     </div>
   </section>
 
-  <!-- RECIPE GRID -->
+  <!-- RECIPE INDEX -->
+  <!--
+    Flat list for now. `data-category` is already set on each item so a
+    future category filter/tab bar (see .recipe-grid in style.css, kept
+    around unused for a category-grouped grid view later) can slot in
+    without restructuring this markup — just read the attribute and
+    show/hide or regroup <li> elements by it.
+  -->
   <section class="recipes-list" id="recipe-list" aria-labelledby="recipe-list-heading">
     <div class="container">
       <div class="section-heading reveal">
@@ -126,153 +133,111 @@
         <p class="section-sub">A starter set of everyday recipes, built around ingredients you'll find at Aldi, Coles or Woolworths.</p>
       </div>
 
-      <div class="recipe-grid">
+      <ul class="recipe-index-list reveal">
 
-        <!-- Butter Chicken -->
-        <article class="recipe-card reveal" data-recipe-name="Butter Chicken">
-          <div class="recipe-card-header">
-            <h3>Butter Chicken</h3>
-            <p class="recipe-meta">Serves 4 &middot; ~40 min</p>
-          </div>
-          <p class="recipe-desc">A rich, mildly spiced tomato and cream curry &mdash; a weeknight favourite that's easier to make than it looks.</p>
-          <ul class="recipe-ingredients">
-            <li data-ingredient-name="Chicken thigh fillets" data-ingredient-qty="1">700g chicken thigh fillets, diced</li>
-            <li data-ingredient-name="Garam masala" data-ingredient-qty="1">1 tbsp garam masala</li>
-            <li data-ingredient-name="Greek yoghurt" data-ingredient-qty="1">1 tub Greek yoghurt</li>
-            <li data-ingredient-name="Brown onion" data-ingredient-qty="1">1 brown onion, diced</li>
-            <li data-ingredient-name="Garlic" data-ingredient-qty="1">1 bulb garlic</li>
-            <li data-ingredient-name="Ginger" data-ingredient-qty="1">1 knob ginger</li>
-            <li data-ingredient-name="Canned diced tomatoes" data-ingredient-qty="1">1 can diced tomatoes</li>
-            <li data-ingredient-name="Thickened cream" data-ingredient-qty="1">1 tub thickened cream</li>
-            <li data-ingredient-name="Butter" data-ingredient-qty="1">1 block butter</li>
-            <li data-ingredient-name="Basmati rice" data-ingredient-qty="1">1kg basmati rice</li>
-            <li data-ingredient-name="Coriander" data-ingredient-qty="1">1 bunch coriander</li>
-          </ul>
-          <div class="recipe-actions">
-            <button type="button" class="btn btn-primary btn-small recipe-import-btn">Add to Shopping List</button>
-            <button type="button" class="btn btn-ghost btn-small recipe-copy-btn">Copy list</button>
-          </div>
-        </article>
+        <li class="recipe-index-item" data-category="Curry">
+          <a href="recipes/butter-chicken.html" class="recipe-index-link">
+            <div class="recipe-index-main">
+              <span class="recipe-index-tag">Curry</span>
+              <h3>Butter Chicken</h3>
+              <p>A rich, mildly spiced tomato and cream curry &mdash; easier to make than it looks.</p>
+            </div>
+            <div class="recipe-index-meta">
+              <span>Serves 4</span>
+              <span>~40 min</span>
+            </div>
+            <svg class="recipe-index-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
 
-        <!-- Spaghetti Bolognese -->
-        <article class="recipe-card reveal" data-recipe-name="Spaghetti Bolognese">
-          <div class="recipe-card-header">
-            <h3>Spaghetti Bolognese</h3>
-            <p class="recipe-meta">Serves 4 &middot; ~45 min</p>
-          </div>
-          <p class="recipe-desc">A slow-simmered beef and tomato sauce over spaghetti &mdash; the kind of meal that's better the longer it cooks.</p>
-          <ul class="recipe-ingredients">
-            <li data-ingredient-name="Spaghetti" data-ingredient-qty="1">500g spaghetti</li>
-            <li data-ingredient-name="Beef mince" data-ingredient-qty="1">500g beef mince</li>
-            <li data-ingredient-name="Brown onion" data-ingredient-qty="1">1 brown onion, diced</li>
-            <li data-ingredient-name="Garlic" data-ingredient-qty="1">1 bulb garlic</li>
-            <li data-ingredient-name="Carrot" data-ingredient-qty="1">2 carrots, diced</li>
-            <li data-ingredient-name="Celery" data-ingredient-qty="1">2 sticks celery, diced</li>
-            <li data-ingredient-name="Canned diced tomatoes" data-ingredient-qty="2">2 cans diced tomatoes</li>
-            <li data-ingredient-name="Beef stock" data-ingredient-qty="1">1L beef stock</li>
-            <li data-ingredient-name="Parmesan" data-ingredient-qty="1">1 block parmesan, grated</li>
-            <li data-ingredient-name="Olive oil" data-ingredient-qty="1">Olive oil</li>
-          </ul>
-          <div class="recipe-actions">
-            <button type="button" class="btn btn-primary btn-small recipe-import-btn">Add to Shopping List</button>
-            <button type="button" class="btn btn-ghost btn-small recipe-copy-btn">Copy list</button>
-          </div>
-        </article>
+        <li class="recipe-index-item" data-category="Pasta">
+          <a href="recipes/spaghetti-bolognese.html" class="recipe-index-link">
+            <div class="recipe-index-main">
+              <span class="recipe-index-tag">Pasta</span>
+              <h3>Spaghetti Bolognese</h3>
+              <p>A slow-simmered beef and tomato sauce &mdash; better the longer it cooks.</p>
+            </div>
+            <div class="recipe-index-meta">
+              <span>Serves 4</span>
+              <span>~45 min</span>
+            </div>
+            <svg class="recipe-index-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
 
-        <!-- Vegetable Fried Rice -->
-        <article class="recipe-card reveal" data-recipe-name="Vegetable Fried Rice">
-          <div class="recipe-card-header">
-            <h3>Vegetable Fried Rice</h3>
-            <p class="recipe-meta">Serves 3 &middot; ~25 min</p>
-          </div>
-          <p class="recipe-desc">A fast, freezer-friendly fried rice that's a good way to use up whatever's left in the fridge.</p>
-          <ul class="recipe-ingredients">
-            <li data-ingredient-name="Jasmine rice" data-ingredient-qty="1">1kg jasmine rice</li>
-            <li data-ingredient-name="Eggs" data-ingredient-qty="1">1 dozen eggs</li>
-            <li data-ingredient-name="Frozen mixed vegetables" data-ingredient-qty="1">1 bag frozen mixed vegetables</li>
-            <li data-ingredient-name="Spring onion" data-ingredient-qty="1">1 bunch spring onion</li>
-            <li data-ingredient-name="Soy sauce" data-ingredient-qty="1">Soy sauce</li>
-            <li data-ingredient-name="Sesame oil" data-ingredient-qty="1">Sesame oil</li>
-            <li data-ingredient-name="Garlic" data-ingredient-qty="1">1 bulb garlic</li>
-            <li data-ingredient-name="Ginger" data-ingredient-qty="1">1 knob ginger</li>
-          </ul>
-          <div class="recipe-actions">
-            <button type="button" class="btn btn-primary btn-small recipe-import-btn">Add to Shopping List</button>
-            <button type="button" class="btn btn-ghost btn-small recipe-copy-btn">Copy list</button>
-          </div>
-        </article>
+        <li class="recipe-index-item" data-category="Asian">
+          <a href="recipes/vegetable-fried-rice.html" class="recipe-index-link">
+            <div class="recipe-index-main">
+              <span class="recipe-index-tag">Asian</span>
+              <h3>Vegetable Fried Rice</h3>
+              <p>Fast and freezer-friendly &mdash; a good way to use up whatever's in the fridge.</p>
+            </div>
+            <div class="recipe-index-meta">
+              <span>Serves 3</span>
+              <span>~25 min</span>
+            </div>
+            <svg class="recipe-index-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
 
-        <!-- Classic Beef Tacos -->
-        <article class="recipe-card reveal" data-recipe-name="Classic Beef Tacos">
-          <div class="recipe-card-header">
-            <h3>Classic Beef Tacos</h3>
-            <p class="recipe-meta">Serves 4 &middot; ~25 min</p>
-          </div>
-          <p class="recipe-desc">Build-your-own tacos &mdash; always a safe bet for a night when everyone wants something different.</p>
-          <ul class="recipe-ingredients">
-            <li data-ingredient-name="Beef mince" data-ingredient-qty="1">500g beef mince</li>
-            <li data-ingredient-name="Taco seasoning" data-ingredient-qty="1">1 packet taco seasoning</li>
-            <li data-ingredient-name="Taco shells" data-ingredient-qty="1">1 box taco shells</li>
-            <li data-ingredient-name="Cheddar cheese" data-ingredient-qty="1">1 block cheddar cheese, grated</li>
-            <li data-ingredient-name="Lettuce" data-ingredient-qty="1">1 lettuce, shredded</li>
-            <li data-ingredient-name="Tomato" data-ingredient-qty="2">2 tomatoes, diced</li>
-            <li data-ingredient-name="Sour cream" data-ingredient-qty="1">1 tub sour cream</li>
-            <li data-ingredient-name="Brown onion" data-ingredient-qty="1">1 brown onion, diced</li>
-          </ul>
-          <div class="recipe-actions">
-            <button type="button" class="btn btn-primary btn-small recipe-import-btn">Add to Shopping List</button>
-            <button type="button" class="btn btn-ghost btn-small recipe-copy-btn">Copy list</button>
-          </div>
-        </article>
+        <li class="recipe-index-item" data-category="Mexican">
+          <a href="recipes/classic-beef-tacos.html" class="recipe-index-link">
+            <div class="recipe-index-main">
+              <span class="recipe-index-tag">Mexican</span>
+              <h3>Classic Beef Tacos</h3>
+              <p>Build-your-own tacos &mdash; a safe bet when everyone wants something different.</p>
+            </div>
+            <div class="recipe-index-meta">
+              <span>Serves 4</span>
+              <span>~25 min</span>
+            </div>
+            <svg class="recipe-index-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
 
-        <!-- Honey Soy Salmon -->
-        <article class="recipe-card reveal" data-recipe-name="Honey Soy Salmon with Greens">
-          <div class="recipe-card-header">
-            <h3>Honey Soy Salmon with Greens</h3>
-            <p class="recipe-meta">Serves 2 &middot; ~20 min</p>
-          </div>
-          <p class="recipe-desc">A quick, sticky pan-seared salmon with a fast side of greens &mdash; on the table in well under half an hour.</p>
-          <ul class="recipe-ingredients">
-            <li data-ingredient-name="Salmon fillets" data-ingredient-qty="1">2 salmon fillets</li>
-            <li data-ingredient-name="Honey" data-ingredient-qty="1">Honey</li>
-            <li data-ingredient-name="Soy sauce" data-ingredient-qty="1">Soy sauce</li>
-            <li data-ingredient-name="Garlic" data-ingredient-qty="1">1 bulb garlic</li>
-            <li data-ingredient-name="Broccolini" data-ingredient-qty="1">1 bunch broccolini</li>
-            <li data-ingredient-name="Green beans" data-ingredient-qty="1">1 handful green beans</li>
-            <li data-ingredient-name="Sesame oil" data-ingredient-qty="1">Sesame oil</li>
-            <li data-ingredient-name="Spring onion" data-ingredient-qty="1">1 bunch spring onion</li>
-          </ul>
-          <div class="recipe-actions">
-            <button type="button" class="btn btn-primary btn-small recipe-import-btn">Add to Shopping List</button>
-            <button type="button" class="btn btn-ghost btn-small recipe-copy-btn">Copy list</button>
-          </div>
-        </article>
+        <li class="recipe-index-item" data-category="Seafood">
+          <a href="recipes/honey-soy-salmon-with-greens.html" class="recipe-index-link">
+            <div class="recipe-index-main">
+              <span class="recipe-index-tag">Seafood</span>
+              <h3>Honey Soy Salmon with Greens</h3>
+              <p>Sticky pan-seared salmon with a fast side of greens &mdash; under half an hour.</p>
+            </div>
+            <div class="recipe-index-meta">
+              <span>Serves 2</span>
+              <span>~20 min</span>
+            </div>
+            <svg class="recipe-index-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
 
-        <!-- Loaded Nachos -->
-        <article class="recipe-card reveal" data-recipe-name="Loaded Nachos">
-          <div class="recipe-card-header">
-            <h3>Loaded Nachos</h3>
-            <p class="recipe-meta">Serves 4, sharing &middot; ~30 min</p>
-          </div>
-          <p class="recipe-desc">A tray of nachos built for the middle of the table &mdash; good for a casual night in with friends.</p>
-          <ul class="recipe-ingredients">
-            <li data-ingredient-name="Corn chips" data-ingredient-qty="1">1 bag corn chips</li>
-            <li data-ingredient-name="Beef mince" data-ingredient-qty="1">500g beef mince</li>
-            <li data-ingredient-name="Taco seasoning" data-ingredient-qty="1">1 packet taco seasoning</li>
-            <li data-ingredient-name="Refried beans" data-ingredient-qty="1">1 can refried beans</li>
-            <li data-ingredient-name="Cheddar cheese" data-ingredient-qty="1">1 block cheddar cheese, grated</li>
-            <li data-ingredient-name="Jalapeños" data-ingredient-qty="1">1 jar jalapeños</li>
-            <li data-ingredient-name="Sour cream" data-ingredient-qty="1">1 tub sour cream</li>
-            <li data-ingredient-name="Tomato" data-ingredient-qty="2">2 tomatoes, diced</li>
-            <li data-ingredient-name="Spring onion" data-ingredient-qty="1">1 bunch spring onion</li>
-          </ul>
-          <div class="recipe-actions">
-            <button type="button" class="btn btn-primary btn-small recipe-import-btn">Add to Shopping List</button>
-            <button type="button" class="btn btn-ghost btn-small recipe-copy-btn">Copy list</button>
-          </div>
-        </article>
+        <li class="recipe-index-item" data-category="Mexican">
+          <a href="recipes/loaded-nachos.html" class="recipe-index-link">
+            <div class="recipe-index-main">
+              <span class="recipe-index-tag">Mexican</span>
+              <h3>Loaded Nachos</h3>
+              <p>A tray built for the middle of the table &mdash; good for a casual night in.</p>
+            </div>
+            <div class="recipe-index-meta">
+              <span>Serves 4</span>
+              <span>~30 min</span>
+            </div>
+            <svg class="recipe-index-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
 
-      </div>
+      </ul>
     </div>
   </section>
 
@@ -304,9 +269,6 @@
   </div>
 </footer>
 
-<div class="toast" id="recipeToast" role="status" aria-live="polite"></div>
-
-<script src="js/recipes.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>

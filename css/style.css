@@ -1194,6 +1194,9 @@ h1, h2, h3, h4 {
   border-top: 1px solid var(--border);
 }
 
+/* Not used by the current flat list (see .recipe-index-list below) — kept
+   for a future category-grouped grid view, so recipe cards can drop back
+   into a grid per-category without new layout CSS. */
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1218,9 +1221,27 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-md);
 }
 
+.recipe-card-header h1,
 .recipe-card-header h3 {
   font-size: 1.15rem;
   margin-bottom: 0.2rem;
+}
+
+/* Single recipe's own page (recipes/<slug>.html) — the card is the page's
+   main content rather than one tile in a grid, so it gets more room. */
+.recipe-card--detail {
+  max-width: 640px;
+  margin-inline: auto;
+  padding: var(--space-6);
+}
+
+.recipe-card--detail .recipe-card-header h1 {
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+}
+
+.recipe-card--detail:hover {
+  transform: none;
+  box-shadow: none;
 }
 
 .recipe-meta {
@@ -1267,6 +1288,114 @@ h1, h2, h3, h4 {
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: auto;
+}
+
+/* Individual recipe page (recipes/<slug>.html) */
+
+.recipe-detail {
+  padding-block: var(--space-7);
+}
+
+.recipe-detail-inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.recipe-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--space-5);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.recipe-back-link:hover {
+  color: var(--orange);
+}
+
+/* Recipe index (recipes.html) — flat list of links to individual pages */
+
+.recipe-index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.recipe-index-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  transition: transform var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    background var(--dur-fast) var(--ease);
+}
+
+.recipe-index-link:hover {
+  transform: translateX(4px);
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+}
+
+.recipe-index-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.recipe-index-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: var(--orange-dim);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--r-pill);
+  margin-bottom: var(--space-2);
+}
+
+.recipe-index-main h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.recipe-index-main p {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.recipe-index-meta {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.recipe-index-arrow {
+  width: 20px;
+  height: 20px;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  transition: transform var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.recipe-index-link:hover .recipe-index-arrow {
+  transform: translateX(3px);
+  color: var(--orange);
 }
 
 /* ==========================================================================
@@ -1389,6 +1518,10 @@ h1, h2, h3, h4 {
 
   .showcase-featured {
     max-width: 360px;
+  }
+
+  .recipe-index-meta {
+    display: flex;
   }
 }
 
