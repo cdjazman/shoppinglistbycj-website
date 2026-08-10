@@ -89,7 +89,11 @@
   }
 
   function buildImportUrl(recipeName, items) {
-    var payload = { recipeName: recipeName, items: items };
+    // returnUrl lets the app send the browser back to this exact recipe
+    // page once the person has picked which list to add the ingredients
+    // to. The app validates this against a host allowlist before ever
+    // navigating to it, since it arrives as untrusted URL input.
+    var payload = { recipeName: recipeName, items: items, returnUrl: window.location.href };
     var encoded = encodeURIComponent(JSON.stringify(payload));
     return SHOPPING_LIST_APP_URL.replace(/\/$/, '') + '/?import=' + encoded;
   }
