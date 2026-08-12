@@ -229,6 +229,28 @@ h1, h2, h3, h4 {
   transform: translateY(-2px);
 }
 
+.btn-coffee {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  padding: 0.5rem 1.05rem;
+  font-size: 0.85rem;
+}
+
+.btn-coffee svg {
+  width: 16px;
+  height: 16px;
+  color: #ffdd00;
+  flex-shrink: 0;
+}
+
+.btn-coffee:hover {
+  border-color: #ffdd00;
+  background: rgba(255, 221, 0, 0.08);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
 /* ==========================================================================
    Header
    ========================================================================== */
