@@ -93,6 +93,26 @@
       });
   }
 
+  // Display labels for Llama Guard's category codes - falls back to the
+  // raw code for anything not in this list, so nothing breaks if
+  // Cloudflare's taxonomy changes.
+  var MODERATION_LABELS = {
+    S1: 'Violent crimes', S2: 'Non-violent crimes', S3: 'Sex-related crimes',
+    S4: 'Child sexual exploitation', S5: 'Defamation', S6: 'Specialized advice',
+    S7: 'Privacy', S8: 'Intellectual property', S9: 'Weapons',
+    S10: 'Hate / degrading language', S11: 'Suicide & self-harm',
+    S12: 'Sexual content', S13: 'Elections', S14: 'Code interpreter abuse',
+    blocklist: 'Blocked word',
+  };
+
+  function moderationSummary(item) {
+    var categories = (item.moderation && item.moderation.categories) || [];
+    if (!categories.length) return 'Flagged by automated moderation';
+    return categories
+      .map(function (code) { return MODERATION_LABELS[code] || code; })
+      .join(', ');
+  }
+
   function renderQueue(pending, token) {
     document.getElementById('queueCount').textContent = String(pending.length);
     var list = document.getElementById('queueList');
@@ -102,16 +122,30 @@
       return;
     }
 
-    list.innerHTML = pending
+    // Flagged items float to the top so they're not missed among a long queue.
+    var sorted = pending.slice().sort(function (a, b) {
+      var aFlagged = a.moderation && a.moderation.flagged ? 1 : 0;
+      var bFlagged = b.moderation && b.moderation.flagged ? 1 : 0;
+      return bFlagged - aFlagged;
+    });
+
+    list.innerHTML = sorted
       .map(function (item) {
         var name = item.name ? escapeHtml(item.name) : 'Anonymous shopper';
+        var flagged = Boolean(item.moderation && item.moderation.flagged);
+        var textBlock = flagged
+          ? '<div class="review-flag-banner">⚠️ Flagged: ' + escapeHtml(moderationSummary(item)) + '</div>' +
+            '<button type="button" class="btn btn-small review-reveal-btn" data-action="reveal">Show flagged text</button>' +
+            '<p class="review-card-text" data-flagged-text hidden>' + escapeHtml(item.text) + '</p>'
+          : '<p class="review-card-text">' + escapeHtml(item.text) + '</p>';
+
         return (
-          '<div class="admin-item" data-id="' + escapeHtml(item.id) + '">' +
+          '<div class="admin-item' + (flagged ? ' admin-item--flagged' : '') + '" data-id="' + escapeHtml(item.id) + '">' +
           '<div class="review-card-head">' +
           '<span class="review-card-name">' + name + '</span>' +
           '<span class="star-display" aria-label="' + item.rating + ' out of 5 stars">' + starString(item.rating) + '</span>' +
           '</div>' +
-          '<p class="review-card-text">' + escapeHtml(item.text) + '</p>' +
+          textBlock +
           '<span class="review-card-date">' + formatDate(item.createdAt) + '</span>' +
           '<div class="admin-item-actions">' +
           '<button type="button" class="btn btn-small btn-approve" data-action="approve">Approve</button>' +
@@ -122,7 +156,16 @@
       })
       .join('');
 
-    list.querySelectorAll('button[data-action]').forEach(function (btn) {
+    list.querySelectorAll('button[data-action="reveal"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var itemEl = btn.closest('.admin-item');
+        var textEl = itemEl.querySelector('[data-flagged-text]');
+        textEl.hidden = false;
+        btn.hidden = true;
+      });
+    });
+
+    list.querySelectorAll('button[data-action="approve"], button[data-action="reject"]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var itemEl = btn.closest('.admin-item');
         var id = itemEl.getAttribute('data-id');

@@ -1869,6 +1869,37 @@ h1, h2, h3, h4 {
   padding: var(--space-4);
 }
 
+.admin-item--flagged {
+  border-color: rgba(214, 69, 69, 0.5);
+  border-left: 3px solid #d64545;
+  background: rgba(214, 69, 69, 0.06);
+}
+
+.review-flag-banner {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #d64545;
+  margin-bottom: var(--space-2);
+}
+
+.review-reveal-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  margin-bottom: var(--space-2);
+}
+
+.review-reveal-btn:hover {
+  border-color: #d64545;
+  color: #d64545;
+}
+
+/* Same `.btn{display:inline-flex}` vs `[hidden]` specificity tie as
+   .reviews-summary above - needs an explicit override. */
+.review-reveal-btn[hidden] {
+  display: none;
+}
+
 .admin-item-actions {
   display: flex;
   gap: var(--space-2);
