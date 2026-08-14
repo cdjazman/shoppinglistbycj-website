@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Feedback Moderation — Shopping List by CJ</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d0d0f">
+<meta name="color-scheme" content="dark">
+
+<link rel="icon" type="image/png" href="images/icon-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main id="main">
+  <section class="hero legal-hero" aria-labelledby="admin-heading">
+    <div class="container legal-hero-inner">
+      <h1 id="admin-heading" class="hero-heading">Feedback moderation</h1>
+      <p class="hero-sub">Not linked anywhere on the site, not indexed. Bookmark this page.</p>
+    </div>
+  </section>
+
+  <section class="legal-content-section">
+    <div class="container">
+
+      <div class="signup-panel admin-gate" id="tokenGate">
+        <h2>Enter admin token</h2>
+        <p class="form-intro">Set in Cloudflare Pages as the <code>ADMIN_TOKEN</code> environment variable.</p>
+        <div class="form-error" id="tokenError" role="alert"></div>
+        <form id="tokenForm" class="beta-form">
+          <div class="form-group">
+            <label for="tokenInput">Token</label>
+            <input type="password" id="tokenInput" name="token" autocomplete="off" required>
+          </div>
+          <button type="submit" class="btn btn-primary form-submit">Unlock</button>
+        </form>
+      </div>
+
+      <div id="queueWrap" hidden>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: var(--space-4);">
+          <h2 style="margin:0;">Pending review (<span id="queueCount">0</span>)</h2>
+          <button type="button" class="btn btn-ghost btn-small" id="refreshBtn">Refresh</button>
+        </div>
+        <div class="admin-queue" id="queueList"></div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<script src="js/admin-feedback.js" defer></script>
+</body>
+</html>

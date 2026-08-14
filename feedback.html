@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Feedback & Reviews — Shopping List by CJ</title>
+<meta name="description" content="Leave a rating and feedback for Shopping List by CJ, or see what other shoppers think.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shoppinglistbycj.app/feedback.html">
+
+<meta name="theme-color" content="#0d0d0f">
+<meta name="color-scheme" content="dark">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shopping List by CJ">
+<meta property="og:title" content="Feedback & Reviews — Shopping List by CJ">
+<meta property="og:description" content="Leave a rating and feedback for Shopping List by CJ, or see what other shoppers think.">
+<meta property="og:image" content="https://shoppinglistbycj.app/images/logo.png">
+<meta property="og:url" content="https://shoppinglistbycj.app/feedback.html">
+<meta property="og:locale" content="en_AU">
+
+<link rel="icon" type="image/png" href="images/icon-logo.png">
+<link rel="apple-touch-icon" href="images/icon-logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="Shopping List by CJ home">
+      <img src="images/logo-pill-dark.png" alt="Shopping List by CJ" class="brand-logo">
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#screenshots">Screenshots</a></li>
+        <li><a href="help.html">Guide</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+      <a href="https://shopping-list-by-cj.pages.dev" class="btn btn-primary btn-small" target="_blank" rel="noopener">Open App</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- INTRO -->
+  <section class="hero legal-hero" aria-labelledby="feedback-heading">
+    <div class="container legal-hero-inner reveal">
+      <span class="badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        Shaped by real shoppers
+      </span>
+      <h1 id="feedback-heading" class="hero-heading">Feedback & Reviews</h1>
+      <p class="hero-sub">
+        Tell us what's working, what isn't, or just leave a rating &mdash; every review here is read by an actual person before it goes live.
+      </p>
+    </div>
+  </section>
+
+  <!-- FORM + REVIEWS -->
+  <section class="legal-content-section">
+    <div class="container">
+      <div class="feedback-layout">
+
+        <!-- Feedback form -->
+        <div class="signup-panel">
+          <div id="feedbackFormWrap">
+            <h2>Leave feedback</h2>
+            <p class="form-intro">Takes about a minute. Your review is checked before it appears below &mdash; it won't post instantly.</p>
+
+            <div class="form-error" id="feedbackError" role="alert"></div>
+
+            <form class="beta-form" id="feedbackForm" novalidate>
+              <fieldset class="star-rating">
+                <legend>Your rating</legend>
+                <div class="star-rating-stars">
+                  <input type="radio" id="star5" name="rating" value="5" required>
+                  <label for="star5" aria-label="5 stars">★</label>
+                  <input type="radio" id="star4" name="rating" value="4">
+                  <label for="star4" aria-label="4 stars">★</label>
+                  <input type="radio" id="star3" name="rating" value="3">
+                  <label for="star3" aria-label="3 stars">★</label>
+                  <input type="radio" id="star2" name="rating" value="2">
+                  <label for="star2" aria-label="2 stars">★</label>
+                  <input type="radio" id="star1" name="rating" value="1">
+                  <label for="star1" aria-label="1 star">★</label>
+                </div>
+              </fieldset>
+
+              <div class="form-group">
+                <label for="feedbackText">Your feedback</label>
+                <textarea id="feedbackText" name="text" maxlength="800" required placeholder="What do you like, or what would make the app better?"></textarea>
+                <span class="form-char-count"><span id="feedbackCharCount">0</span>/800</span>
+              </div>
+
+              <div class="form-group">
+                <label for="feedbackName">Name <span style="font-weight:400;color:var(--text-faint);">(optional, shown next to your review)</span></label>
+                <input type="text" id="feedbackName" name="name" maxlength="60" autocomplete="name" placeholder="Leave blank to post anonymously">
+              </div>
+
+              <!-- Honeypot: hidden from real visitors via CSS, bots fill every field they find -->
+              <div class="form-group form-honeypot" aria-hidden="true">
+                <label for="feedbackWebsite">Leave this field empty</label>
+                <input type="text" id="feedbackWebsite" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
+              <button type="submit" class="btn btn-primary form-submit" id="feedbackSubmit">Submit feedback</button>
+
+              <p class="form-note">
+                Submitting sends your rating, feedback text and (if given) name to be reviewed before publishing. See our <a href="privacy.html">Privacy Policy</a> for details.
+              </p>
+            </form>
+          </div>
+
+          <div class="signup-success" id="feedbackSuccess" hidden>
+            <div class="check-icon check-icon--lg" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12.5L9.5 18L20 6" stroke="#ff6b00" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2>Thanks for the feedback!</h2>
+            <p id="feedbackSuccessMessage">It'll appear below once it's been reviewed.</p>
+            <button type="button" class="btn btn-ghost" id="feedbackAnother">Leave another review</button>
+          </div>
+        </div>
+
+        <!-- Reviews list -->
+        <div>
+          <div class="reviews-summary" id="reviewsSummary" hidden>
+            <span class="reviews-summary-score" id="reviewsScore">&ndash;</span>
+            <div class="reviews-summary-meta">
+              <span class="star-display" id="reviewsAverageStars" aria-hidden="true"></span>
+              <span class="reviews-summary-count" id="reviewsCount"></span>
+            </div>
+          </div>
+
+          <div class="review-list" id="reviewList">
+            <p class="review-empty">Loading reviews&hellip;</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-pill-dark.png" alt="Shopping List by CJ" class="footer-logo">
+      <p>Built in Australia, for Australian shoppers.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="help.html">User Guide</a>
+      <a href="feedback.html">Feedback</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:support@shoppinglistbycj.app">Contact</a>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; <span id="currentYear">2026</span> Shopping List by CJ. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+<script src="js/feedback.js" defer></script>
+</body>
+</html>

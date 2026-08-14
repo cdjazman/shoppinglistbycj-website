@@ -1649,4 +1649,249 @@ h1, h2, h3, h4 {
   .feature-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* ==========================================================================
+   Feedback & Reviews
+   ========================================================================== */
+
+.feedback-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .feedback-layout {
+    grid-template-columns: minmax(320px, 420px) 1fr;
+  }
+}
+
+.beta-form textarea {
+  width: 100%;
+  background: var(--bg-alt);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.beta-form textarea:focus {
+  border-color: var(--orange);
+}
+
+.form-char-count {
+  display: block;
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin-top: 0.35rem;
+}
+
+.form-error {
+  display: none;
+  background: rgba(214, 69, 69, 0.12);
+  border: 1px solid rgba(214, 69, 69, 0.4);
+  color: #ff9d9d;
+  border-radius: var(--r-sm);
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-4);
+}
+
+.form-error.is-visible {
+  display: block;
+}
+
+/* Star rating input - accessible radio-group hack. DOM order is 5..1 and
+   the row is reversed so the *visual* order reads 1..5 left-to-right,
+   which lets a plain ~ sibling combinator light up "this star and every
+   star to its left" on hover/checked without any JS. */
+.star-rating {
+  border: none;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+.star-rating-stars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.star-rating-stars input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+
+.star-rating-stars label {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--border-strong);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
+}
+
+.star-rating-stars label:hover,
+.star-rating-stars label:hover ~ label,
+.star-rating-stars input:checked ~ label {
+  color: var(--orange);
+}
+
+.star-rating-stars input:focus-visible + label {
+  outline: 2px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.star-rating-stars label:active {
+  transform: scale(0.92);
+}
+
+/* Read-only star display (review cards, aggregate rating) */
+.star-display {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--orange);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.star-display[data-empty] {
+  color: var(--border-strong);
+}
+
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+
+/* `display:flex` above otherwise beats the browser's [hidden]{display:none}
+   UA rule at equal specificity, since author styles always win ties. */
+.reviews-summary[hidden] {
+  display: none;
+}
+
+.reviews-summary-score {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+}
+
+.reviews-summary-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.reviews-summary-count {
+  font-size: 0.825rem;
+  color: var(--text-muted);
+}
+
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.review-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--space-4);
+}
+
+.review-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.review-card-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.review-card-date {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+.review-card-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.review-empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: var(--space-4) 0;
+}
+
+/* Admin moderation page (not in nav / not indexed) */
+.admin-gate {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
+.admin-queue {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.admin-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: var(--space-4);
+}
+
+.admin-item-actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.btn-approve {
+  background: #1f8a3c;
+  color: var(--white);
+}
+
+.btn-approve:hover {
+  background: #24a047;
+  transform: translateY(-2px);
+}
+
+.btn-reject {
+  background: transparent;
+  color: #ff9d9d;
+  border: 1px solid rgba(214, 69, 69, 0.4);
+}
+
+.btn-reject:hover {
+  border-color: #d64545;
+  transform: translateY(-2px);
 }
